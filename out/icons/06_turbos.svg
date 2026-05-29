@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48" fill="none">
+  <style>
+    .stroke { fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+    .fill { fill: currentColor; stroke: none; }
+  </style>
+  <!-- housing -->
+  <g id="housing">
+    <circle class="stroke" cx="24" cy="24" r="14"/>
+  </g>
+  <!-- compressor wheel -->
+  <g id="wheel">
+    <circle class="stroke" cx="24" cy="24" r="6"/>
+    <line class="stroke" x1="24" y1="18" x2="24" y2="10"/>
+    <line class="stroke" x1="29" y1="19" x2="34" y2="14"/>
+    <line class="stroke" x1="30" y1="24" x2="38" y2="24"/>
+    <line class="stroke" x1="29" y1="29" x2="34" y2="34"/>
+    <line class="stroke" x1="24" y1="30" x2="24" y2="38"/>
+    <line class="stroke" x1="19" y1="29" x2="14" y2="34"/>
+    <line class="stroke" x1="18" y1="24" x2="10" y2="24"/>
+    <line class="stroke" x1="19" y1="19" x2="14" y2="14"/>
+  </g>
+  <!-- shaft outlets -->
+  <g id="outlets">
+    <line class="stroke" x1="38" y1="20" x2="44" y2="20"/>
+    <line class="stroke" x1="38" y1="28" x2="44" y2="28"/>
+  </g>
+</svg>

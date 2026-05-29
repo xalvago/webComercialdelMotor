@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48" fill="none">
+  <style>
+    .stroke { fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+    .fill { fill: currentColor; stroke: none; }
+  </style>
+  <!-- stator housing -->
+  <g id="stator">
+    <circle class="stroke" cx="24" cy="24" r="16"/>
+  </g>
+  <!-- rotor -->
+  <g id="rotor">
+    <circle class="stroke" cx="24" cy="24" r="9"/>
+  </g>
+  <!-- lightning bolt -->
+  <g id="bolt">
+    <path class="stroke" d="M26 14 L20 24 L24 24 L22 34 L28 24 L24 24 Z"/>
+  </g>
+  <!-- shaft -->
+  <g id="shaft">
+    <line class="stroke" x1="8" y1="24" x2="4" y2="24"/>
+    <line class="stroke" x1="40" y1="24" x2="44" y2="24"/>
+  </g>
+</svg>

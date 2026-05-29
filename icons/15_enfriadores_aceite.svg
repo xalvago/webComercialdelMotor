@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48" fill="none">
+  <style>
+    .stroke { fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+    .fill { fill: currentColor; stroke: none; }
+  </style>
+  <!-- top/bottom tanks -->
+  <g id="tank-top">
+    <rect class="stroke" x="8" y="8" width="32" height="6" rx="2"/>
+  </g>
+  <g id="tank-bottom">
+    <rect class="stroke" x="8" y="34" width="32" height="6" rx="2"/>
+  </g>
+  <!-- cooling tubes -->
+  <g id="tubes">
+    <line class="stroke" x1="14" y1="14" x2="14" y2="34"/>
+    <line class="stroke" x1="19" y1="14" x2="19" y2="34"/>
+    <line class="stroke" x1="24" y1="14" x2="24" y2="34"/>
+    <line class="stroke" x1="29" y1="14" x2="29" y2="34"/>
+    <line class="stroke" x1="34" y1="14" x2="34" y2="34"/>
+  </g>
+  <!-- fins -->
+  <g id="fins">
+    <line class="stroke" x1="10" y1="19" x2="38" y2="19"/>
+    <line class="stroke" x1="10" y1="24" x2="38" y2="24"/>
+    <line class="stroke" x1="10" y1="29" x2="38" y2="29"/>
+  </g>
+</svg>

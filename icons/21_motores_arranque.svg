@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48" fill="none">
+  <style>
+    .stroke { fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+    .fill { fill: currentColor; stroke: none; }
+  </style>
+  <!-- motor body -->
+  <g id="motor-body">
+    <rect class="stroke" x="6" y="16" width="24" height="16" rx="3"/>
+  </g>
+  <!-- drive gear -->
+  <g id="drive-gear">
+    <rect class="stroke" x="30" y="18" width="12" height="12" rx="2"/>
+    <circle class="stroke" cx="36" cy="24" r="4"/>
+  </g>
+  <!-- solenoid -->
+  <g id="solenoid">
+    <rect class="stroke" x="10" y="10" width="14" height="8" rx="2"/>
+    <line class="stroke" x1="24" y1="14" x2="30" y2="14"/>
+  </g>
+  <!-- terminals -->
+  <g id="terminals">
+    <line class="stroke" x1="8" y1="16" x2="4" y2="12"/>
+    <circle class="stroke" cx="4" cy="11" r="2"/>
+    <line class="stroke" x1="20" y1="16" x2="20" y2="10"/>
+  </g>
+</svg>

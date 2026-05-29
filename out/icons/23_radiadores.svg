@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48" fill="none">
+  <style>
+    .stroke { fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+    .fill { fill: currentColor; stroke: none; }
+  </style>
+  <!-- side tanks -->
+  <g id="tank-left">
+    <rect class="stroke" x="6" y="10" width="6" height="28" rx="2"/>
+  </g>
+  <g id="tank-right">
+    <rect class="stroke" x="36" y="10" width="6" height="28" rx="2"/>
+  </g>
+  <!-- tubes -->
+  <g id="tubes">
+    <line class="stroke" x1="12" y1="16" x2="36" y2="16"/>
+    <line class="stroke" x1="12" y1="21" x2="36" y2="21"/>
+    <line class="stroke" x1="12" y1="26" x2="36" y2="26"/>
+    <line class="stroke" x1="12" y1="31" x2="36" y2="31"/>
+  </g>
+  <!-- fins -->
+  <g id="fins">
+    <line class="stroke" x1="18" y1="10" x2="18" y2="38"/>
+    <line class="stroke" x1="24" y1="10" x2="24" y2="38"/>
+    <line class="stroke" x1="30" y1="10" x2="30" y2="38"/>
+  </g>
+  <!-- connections -->
+  <g id="connections">
+    <line class="stroke" x1="4" y1="14" x2="6" y2="14"/>
+    <line class="stroke" x1="4" y1="34" x2="6" y2="34"/>
+    <line class="stroke" x1="42" y1="14" x2="44" y2="14"/>
+    <line class="stroke" x1="42" y1="34" x2="44" y2="34"/>
+  </g>
+</svg>

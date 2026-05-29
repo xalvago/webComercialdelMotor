@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48" fill="none">
+  <style>
+    .stroke { fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+    .fill { fill: currentColor; stroke: none; }
+  </style>
+  <!-- block -->
+  <g id="block">
+    <rect class="stroke" x="8" y="22" width="32" height="20" rx="2"/>
+  </g>
+  <!-- head -->
+  <g id="head">
+    <rect class="stroke" x="10" y="14" width="28" height="10" rx="2"/>
+  </g>
+  <!-- pistons hint -->
+  <g id="pistons">
+    <rect class="stroke" x="14" y="24" width="8" height="14" rx="1"/>
+    <rect class="stroke" x="26" y="24" width="8" height="14" rx="1"/>
+  </g>
+  <!-- sump -->
+  <g id="sump">
+    <path class="stroke" d="M10 42 L10 44 Q10 46 24 46 Q38 46 38 44 L38 42"/>
+  </g>
+  <!-- intake manifold -->
+  <g id="manifold">
+    <line class="stroke" x1="18" y1="14" x2="18" y2="8"/>
+    <line class="stroke" x1="30" y1="14" x2="30" y2="8"/>
+    <line class="stroke" x1="16" y1="8" x2="32" y2="8"/>
+  </g>
+</svg>

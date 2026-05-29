@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48" fill="none">
+  <style>
+    .stroke { fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+    .fill { fill: currentColor; stroke: none; }
+  </style>
+  <!-- pump housing -->
+  <g id="housing">
+    <circle class="stroke" cx="24" cy="24" r="14"/>
+  </g>
+  <!-- impeller -->
+  <g id="impeller">
+    <circle class="stroke" cx="24" cy="24" r="5"/>
+    <path class="stroke" d="M24 19 Q30 20 29 24"/>
+    <path class="stroke" d="M29 24 Q28 30 24 29"/>
+    <path class="stroke" d="M24 29 Q18 28 19 24"/>
+    <path class="stroke" d="M19 24 Q20 18 24 19"/>
+  </g>
+  <!-- inlet -->
+  <g id="inlet">
+    <line class="stroke" x1="24" y1="10" x2="24" y2="6"/>
+    <line class="stroke" x1="20" y1="6" x2="28" y2="6"/>
+  </g>
+  <!-- outlet -->
+  <g id="outlet">
+    <line class="stroke" x1="38" y1="24" x2="44" y2="24"/>
+    <line class="stroke" x1="44" y1="20" x2="44" y2="28"/>
+  </g>
+</svg>

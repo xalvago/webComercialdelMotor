@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48" fill="none">
+  <style>
+    .stroke { fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+    .fill { fill: currentColor; stroke: none; }
+  </style>
+  <!-- shaft -->
+  <g id="camshaft">
+    <line class="stroke" x1="6" y1="24" x2="42" y2="24"/>
+  </g>
+  <!-- journals -->
+  <g id="journals">
+    <circle class="stroke" cx="12" cy="24" r="3"/>
+    <circle class="stroke" cx="24" cy="24" r="3"/>
+    <circle class="stroke" cx="36" cy="24" r="3"/>
+  </g>
+  <!-- lobes -->
+  <g id="lobe-1">
+    <ellipse class="stroke" cx="12" cy="16" rx="4" ry="7" transform="rotate(-10 12 16)"/>
+  </g>
+  <g id="lobe-2">
+    <ellipse class="stroke" cx="24" cy="32" rx="4" ry="7" transform="rotate(10 24 32)"/>
+  </g>
+  <g id="lobe-3">
+    <ellipse class="stroke" cx="36" cy="16" rx="4" ry="7" transform="rotate(-10 36 16)"/>
+  </g>
+</svg>
