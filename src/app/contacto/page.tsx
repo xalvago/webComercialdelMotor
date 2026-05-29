@@ -39,23 +39,38 @@ export default function ContactoPage() {
       <div className="relative overflow-hidden">
         {/* Video fondo */}
         <div className="absolute inset-0 pointer-events-none select-none overflow-hidden" aria-hidden>
+          <style>{`
+            .contacto-video {
+              position: absolute;
+              top: 50%;
+              left: 50%;
+              min-width: 100%;
+              min-height: 100%;
+              width: auto;
+              height: auto;
+              transform: translate(-50%, -50%);
+              object-fit: cover;
+            }
+            @media (max-width: 767px) {
+              .contacto-video {
+                top: 0;
+                left: 0;
+                min-width: unset;
+                min-height: unset;
+                width: 100%;
+                height: auto;
+                transform: none;
+                object-fit: unset;
+              }
+            }
+          `}</style>
           <video
             src="/video/contacto.mp4"
             autoPlay
             muted
             loop
             playsInline
-            style={{
-              position: "absolute",
-              top: "50%",
-              left: "50%",
-              minWidth: "100%",
-              minHeight: "100%",
-              width: "auto",
-              height: "auto",
-              transform: "translate(-50%, -50%)",
-              objectFit: "cover",
-            }}
+            className="contacto-video"
           />
         </div>
         {/* Overlay oscuro general */}
