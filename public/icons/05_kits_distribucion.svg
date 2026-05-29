@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48" fill="none">
+  <style>
+    .stroke { fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+    .fill { fill: currentColor; stroke: none; }
+  </style>
+  <!-- sprocket top -->
+  <g id="sprocket-top">
+    <circle class="stroke" cx="16" cy="16" r="8"/>
+    <circle class="stroke" cx="16" cy="16" r="3"/>
+  </g>
+  <!-- sprocket bottom -->
+  <g id="sprocket-bottom">
+    <circle class="stroke" cx="32" cy="34" r="8"/>
+    <circle class="stroke" cx="32" cy="34" r="3"/>
+  </g>
+  <!-- timing belt -->
+  <g id="belt">
+    <line class="stroke" x1="23" y1="14" x2="39" y2="26"/>
+    <line class="stroke" x1="9" y1="22" x2="25" y2="36"/>
+    <path class="stroke" stroke-dasharray="3 2" d="M23 14 Q14 8 9 22"/>
+    <path class="stroke" stroke-dasharray="3 2" d="M39 26 Q42 36 25 36"/>
+  </g>
+</svg>

@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48" fill="none">
+  <style>
+    .stroke { fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+    .fill { fill: currentColor; stroke: none; }
+  </style>
+  <!-- big end -->
+  <g id="big-end">
+    <circle class="stroke" cx="32" cy="34" r="8"/>
+    <circle class="stroke" cx="32" cy="34" r="3"/>
+  </g>
+  <!-- rod beam -->
+  <g id="beam">
+    <path class="stroke" d="M18 14 Q14 24 26 28"/>
+    <path class="stroke" d="M22 14 Q26 20 38 28"/>
+  </g>
+  <!-- small end -->
+  <g id="small-end">
+    <circle class="stroke" cx="20" cy="13" r="6"/>
+    <circle class="stroke" cx="20" cy="13" r="2.5"/>
+  </g>
+</svg>

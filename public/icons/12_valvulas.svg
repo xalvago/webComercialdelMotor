@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48" fill="none">
+  <style>
+    .stroke { fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+    .fill { fill: currentColor; stroke: none; }
+  </style>
+  <!-- stem -->
+  <g id="stem">
+    <line class="stroke" x1="24" y1="8" x2="24" y2="32"/>
+  </g>
+  <!-- keeper groove -->
+  <g id="keeper">
+    <line class="stroke" x1="21" y1="12" x2="27" y2="12"/>
+    <line class="stroke" x1="21" y1="16" x2="27" y2="16"/>
+  </g>
+  <!-- head -->
+  <g id="head">
+    <path class="stroke" d="M12 38 Q12 32 24 32 Q36 32 36 38"/>
+    <line class="stroke" x1="10" y1="38" x2="38" y2="38"/>
+  </g>
+  <!-- spring suggestion -->
+  <g id="spring">
+    <path class="stroke" d="M20 16 Q16 18 20 21 Q24 23 20 26 Q16 28 20 30"/>
+    <path class="stroke" d="M28 16 Q32 18 28 21 Q24 23 28 26 Q32 28 28 30"/>
+  </g>
+</svg>

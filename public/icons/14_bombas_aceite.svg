@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48" fill="none">
+  <style>
+    .stroke { fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+    .fill { fill: currentColor; stroke: none; }
+  </style>
+  <!-- housing -->
+  <g id="housing">
+    <rect class="stroke" x="8" y="12" width="32" height="24" rx="3"/>
+  </g>
+  <!-- gear pair -->
+  <g id="gear-driven">
+    <circle class="stroke" cx="18" cy="24" r="8"/>
+    <circle class="stroke" cx="18" cy="24" r="3"/>
+  </g>
+  <g id="gear-drive">
+    <circle class="stroke" cx="30" cy="24" r="8"/>
+    <circle class="stroke" cx="30" cy="24" r="3"/>
+  </g>
+  <!-- shaft -->
+  <g id="shaft">
+    <line class="stroke" x1="30" y1="8" x2="30" y2="12"/>
+  </g>
+  <!-- ports -->
+  <g id="ports">
+    <line class="stroke" x1="4" y1="18" x2="8" y2="18"/>
+    <line class="stroke" x1="4" y1="30" x2="8" y2="30"/>
+    <line class="stroke" x1="40" y1="18" x2="44" y2="18"/>
+    <line class="stroke" x1="40" y1="30" x2="44" y2="30"/>
+  </g>
+</svg>

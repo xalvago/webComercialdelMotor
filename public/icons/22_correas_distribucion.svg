@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48" fill="none">
+  <style>
+    .stroke { fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+    .fill { fill: currentColor; stroke: none; }
+  </style>
+  <!-- drive sprocket -->
+  <g id="sprocket-crank">
+    <circle class="stroke" cx="14" cy="34" r="8"/>
+    <circle class="stroke" cx="14" cy="34" r="3"/>
+  </g>
+  <!-- cam sprocket -->
+  <g id="sprocket-cam">
+    <circle class="stroke" cx="34" cy="14" r="8"/>
+    <circle class="stroke" cx="34" cy="14" r="3"/>
+  </g>
+  <!-- belt with teeth -->
+  <g id="belt">
+    <path class="stroke" d="M14 26 L14 14 Q14 6 34 6"/>
+    <path class="stroke" d="M22 34 L34 34 Q42 34 42 14"/>
+    <line class="stroke" x1="17" y1="26" x2="17" y2="22"/>
+    <line class="stroke" x1="20" y1="26" x2="20" y2="22"/>
+    <line class="stroke" x1="23" y1="32" x2="27" y2="32"/>
+    <line class="stroke" x1="30" y1="32" x2="34" y2="32"/>
+  </g>
+</svg>

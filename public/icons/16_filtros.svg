@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48" fill="none">
+  <style>
+    .stroke { fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+    .fill { fill: currentColor; stroke: none; }
+  </style>
+  <!-- canister -->
+  <g id="canister">
+    <path class="stroke" d="M16 10 L16 38 Q16 42 24 42 Q32 42 32 38 L32 10"/>
+    <path class="stroke" d="M14 10 Q14 6 24 6 Q34 6 34 10 L14 10"/>
+  </g>
+  <!-- filter media -->
+  <g id="media">
+    <line class="stroke" x1="18" y1="16" x2="30" y2="16"/>
+    <line class="stroke" x1="18" y1="21" x2="30" y2="21"/>
+    <line class="stroke" x1="18" y1="26" x2="30" y2="26"/>
+    <line class="stroke" x1="18" y1="31" x2="30" y2="31"/>
+  </g>
+  <!-- thread top -->
+  <g id="thread">
+    <line class="stroke" x1="20" y1="6" x2="20" y2="2"/>
+    <line class="stroke" x1="24" y1="6" x2="24" y2="2"/>
+    <line class="stroke" x1="28" y1="6" x2="28" y2="2"/>
+  </g>
+</svg>

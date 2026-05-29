@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48" fill="none">
+  <style>
+    .stroke { fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+    .fill { fill: currentColor; stroke: none; }
+  </style>
+  <!-- main shaft -->
+  <g id="shaft">
+    <line class="stroke" x1="6" y1="24" x2="42" y2="24"/>
+  </g>
+  <!-- main journals -->
+  <g id="journals">
+    <circle class="stroke" cx="10" cy="24" r="4"/>
+    <circle class="stroke" cx="38" cy="24" r="4"/>
+    <circle class="stroke" cx="24" cy="24" r="4"/>
+  </g>
+  <!-- crank throws -->
+  <g id="throw-1">
+    <line class="stroke" x1="16" y1="24" x2="16" y2="12"/>
+    <circle class="stroke" cx="16" cy="10" r="4"/>
+  </g>
+  <g id="throw-2">
+    <line class="stroke" x1="32" y1="24" x2="32" y2="36"/>
+    <circle class="stroke" cx="32" cy="38" r="4"/>
+  </g>
+</svg>

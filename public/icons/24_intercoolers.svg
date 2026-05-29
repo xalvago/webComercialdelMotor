@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48" fill="none">
+  <style>
+    .stroke { fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+    .fill { fill: currentColor; stroke: none; }
+  </style>
+  <!-- core body -->
+  <g id="core">
+    <rect class="stroke" x="8" y="14" width="32" height="20" rx="2"/>
+  </g>
+  <!-- cooling tubes vertical -->
+  <g id="tubes">
+    <line class="stroke" x1="16" y1="14" x2="16" y2="34"/>
+    <line class="stroke" x1="24" y1="14" x2="24" y2="34"/>
+    <line class="stroke" x1="32" y1="14" x2="32" y2="34"/>
+  </g>
+  <!-- charge air inlet -->
+  <g id="inlet">
+    <line class="stroke" x1="8" y1="20" x2="2" y2="20"/>
+    <line class="stroke" x1="2" y1="16" x2="2" y2="24"/>
+  </g>
+  <!-- charge air outlet -->
+  <g id="outlet">
+    <line class="stroke" x1="40" y1="20" x2="46" y2="20"/>
+    <line class="stroke" x1="46" y1="16" x2="46" y2="24"/>
+  </g>
+  <!-- airflow arrows in fins -->
+  <g id="airflow">
+    <line class="stroke" x1="10" y1="9" x2="38" y2="9"/>
+    <line class="stroke" x1="34" y1="6" x2="38" y2="9"/>
+    <line class="stroke" x1="34" y1="12" x2="38" y2="9"/>
+    <line class="stroke" x1="10" y1="39" x2="38" y2="39"/>
+    <line class="stroke" x1="14" y1="36" x2="10" y2="39"/>
+    <line class="stroke" x1="14" y1="42" x2="10" y2="39"/>
+  </g>
+</svg>

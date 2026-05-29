@@ -1,0 +1,74 @@
+[
+  {
+    "id": "motores-diesel",
+    "titulo": "Motores Diesel",
+    "descripcion": "Todo sobre el funcionamiento y mantenimiento de motores diesel modernos",
+    "youtubeId": "X_-WAzc2rII",
+    "duracion": "8:32",
+    "fecha": "2024-03-15",
+    "categoria": "Formación"
+  },
+  {
+    "id": "turbocompresor-vtg",
+    "titulo": "Turbocompresor de Geometría Variable (VTG)",
+    "descripcion": "Cómo funciona un turbocompresor de geometría variable y su mantenimiento",
+    "youtubeId": "hzCyjSaDsuE",
+    "duracion": "6:45",
+    "fecha": "2024-02-20",
+    "categoria": "Técnico"
+  },
+  {
+    "id": "rectificadora-ciguenales",
+    "titulo": "Rectificadora de Cigüeñales",
+    "descripcion": "Proceso de rectificación profesional de cigüeñales en taller especializado",
+    "youtubeId": "yDAXqY6TZqk",
+    "duracion": "12:10",
+    "fecha": "2024-01-10",
+    "categoria": "Proceso"
+  },
+  {
+    "id": "rectificacion-asiento-culata",
+    "titulo": "Rectificación de Asientos de Culata",
+    "descripcion": "Técnica de rectificación de asientos de válvula en culata de motor",
+    "youtubeId": "ZeyYUtm9y2U",
+    "duracion": "9:22",
+    "fecha": "2023-12-05",
+    "categoria": "Técnico"
+  },
+  {
+    "id": "arbol-de-levas",
+    "titulo": "Árbol de Levas",
+    "descripcion": "Ingeniería del árbol de levas: funcionamiento e inspección en motores modernos",
+    "youtubeId": "2vzPFQGue34",
+    "duracion": "7:15",
+    "fecha": "2023-11-18",
+    "categoria": "Formación"
+  },
+  {
+    "id": "pistones-fabricacion",
+    "titulo": "Fabricación de Pistones",
+    "descripcion": "Guía completa del proceso de fabricación de pistones de motor",
+    "youtubeId": "U7buag-1c2M",
+    "duracion": "10:40",
+    "fecha": "2023-10-22",
+    "categoria": "Proceso"
+  },
+  {
+    "id": "armar-motor-combustion",
+    "titulo": "Armado de Motor de Combustión Interna",
+    "descripcion": "Motor de combustión interna a gasolina: armado paso a paso",
+    "youtubeId": "hcmCy2Ql0Uc",
+    "duracion": "15:30",
+    "fecha": "2023-09-14",
+    "categoria": "Formación"
+  },
+  {
+    "id": "fabricacion-ciguenales",
+    "titulo": "Fabricación de Cigüeñal",
+    "descripcion": "Proceso industrial de fabricación y mecanizado de cigüeñales de motor",
+    "youtubeId": "kjTF64OSOa4",
+    "duracion": "11:05",
+    "fecha": "2023-08-30",
+    "categoria": "Proceso"
+  }
+]
