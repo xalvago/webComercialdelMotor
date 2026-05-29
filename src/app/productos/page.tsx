@@ -440,7 +440,7 @@ export default function ProductosPage() {
                 {countLabel}
                 {tipoFiltro !== p.tipos.todos && ` · ${tipoFiltro}`}
                 {search && ` · "${search}"`}
-                {selectedProduct && ` · ${p.focoActivo.toLowerCase()}`}
+
               </div>
 
               {/* Cards */}
@@ -547,35 +547,6 @@ export default function ProductosPage() {
                           >
                             {descripcion}
                           </p>
-
-                          {/* Selected badge */}
-                          {isSelected && (
-                            <div
-                              style={{
-                                color: "#e02020",
-                                fontSize: "10px",
-                                fontFamily: "'JetBrains Mono', 'Courier New', monospace",
-                                textTransform: "uppercase",
-                                letterSpacing: "0.08em",
-                                marginBottom: "8px",
-                                display: "flex",
-                                alignItems: "center",
-                                gap: "6px",
-                              }}
-                            >
-                              <span
-                                style={{
-                                  display: "inline-block",
-                                  width: "6px",
-                                  height: "6px",
-                                  borderRadius: "50%",
-                                  background: "#e02020",
-                                  animation: "pulse-dot 1.5s infinite",
-                                }}
-                              />
-                              {p.focoActivo}
-                            </div>
-                          )}
 
                           {/* Tags */}
                           <div className="flex flex-wrap gap-1.5">
