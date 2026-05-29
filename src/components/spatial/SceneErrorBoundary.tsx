@@ -21,6 +21,10 @@ export default class SceneErrorBoundary extends Component<Props, State> {
     return { hasError: true };
   }
 
+  componentDidCatch(error: Error) {
+    console.error("[SpatialScene error]", error);
+  }
+
   render() {
     if (this.state.hasError) {
       return (
