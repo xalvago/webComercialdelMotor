@@ -38,14 +38,24 @@ export default function ContactoPage() {
       {/* Wrapper unificado con video de fondo */}
       <div className="relative overflow-hidden">
         {/* Video fondo */}
-        <div className="absolute inset-0 pointer-events-none select-none" aria-hidden>
+        <div className="absolute inset-0 pointer-events-none select-none overflow-hidden" aria-hidden>
           <video
             src="/video/contacto.mp4"
             autoPlay
             muted
             loop
             playsInline
-            className="w-full h-full object-cover object-center"
+            style={{
+              position: "absolute",
+              top: "50%",
+              left: "50%",
+              minWidth: "100%",
+              minHeight: "100%",
+              width: "auto",
+              height: "auto",
+              transform: "translate(-50%, -50%)",
+              objectFit: "cover",
+            }}
           />
         </div>
         {/* Overlay oscuro general */}
