@@ -152,7 +152,7 @@ export const translations = {
       eyebrow: "Certificaciones",
       h1_1: "Compromiso con",
       h1_2: "la calidad",
-      desc: "En Comercial del Motor, la calidad no es un departamento — es una filosofía que impregna cada proceso, desde la selección de proveedores hasta la entrega al cliente.",
+      desc: "En Comercial del Motor la calidad no es un departamento, es una filosofía que impregna cada proceso, desde la selección de proveedores hasta la entrega al cliente.",
       certActivaLabel: "Certificación activa",
       certTitle: "ISO 9001:2015",
       certText: "Comercial del Motor cuenta con la certificación ISO 9001:2015 auditada por BSI (British Standards Institution), el organismo de normalización más reconocido del mundo. Esta certificación garantiza que nuestros procesos cumplen los más altos estándares internacionales de gestión de calidad.",
