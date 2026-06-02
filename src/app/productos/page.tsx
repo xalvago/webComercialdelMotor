@@ -20,7 +20,6 @@ function mlField(obj: Record<string, string | undefined>, field: string, lang: L
   return obj[field] ?? "";
 }
 
-// SSR=false — WebGL canvas
 const SpatialScene = dynamic(
   () => import("@/components/spatial/SpatialScene"),
   {
@@ -65,10 +64,10 @@ const RED_FILTER =
   "brightness(0) saturate(100%) invert(13%) sepia(94%) saturate(6029%) hue-rotate(345deg) brightness(96%) contrast(104%)";
 
 const tipoColors: Record<string, string> = {
-  Turismo:    "bg-[#f0f4ff] text-[#1a56c4] border border-[#b8d0f8]",
-  Industrial: "bg-[#fffaf0] text-[#b45309] border border-[#f8d8a0]",
-  Agrícola:   "bg-[#f0f8f0] text-[#2e7d32] border border-[#a8d8aa]",
-  Pesado:     "bg-[#fff0f0] text-[#c62828] border border-[#f8b8b8]",
+  Turismo:    "bg-[#EEF2FF] text-[#3B5BDB] border border-[#C5D8FF] dark:bg-[#1E2A4A] dark:text-[#74A7FF] dark:border-[#2D4080]",
+  Industrial: "bg-[#FFF9F0] text-[#D97706] border border-[#FDD5A0] dark:bg-[#2A1E0A] dark:text-[#F5A742] dark:border-[#4A3015]",
+  Agrícola:   "bg-[#F0FDF4] text-[#16A34A] border border-[#BBF7D0] dark:bg-[#0A2A14] dark:text-[#4ADE80] dark:border-[#15532E]",
+  Pesado:     "bg-[#FEF2F2] text-[#DC2626] border border-[#FECACA] dark:bg-[#2A0A0A] dark:text-[#F87171] dark:border-[#7F1D1D]",
 };
 
 export default function ProductosPage() {
@@ -90,7 +89,6 @@ export default function ProductosPage() {
     p.tipos.pesado,
   ];
 
-  // Map translated tipo labels back to original data keys for filtering
   const TIPO_KEY: Record<string, string> = {
     [p.tipos.todos]:       "Todos",
     [p.tipos.turismo]:     "Turismo",
@@ -132,7 +130,6 @@ export default function ProductosPage() {
 
   return (
     <>
-      {/* ─── CSS ──────────────────────────────────────────────────────── */}
       <style>{`
         @keyframes cdm-pick {
           0%   { transform: translateY(0)   scale(1); }
@@ -141,8 +138,8 @@ export default function ProductosPage() {
         }
         .cdm-card-picked {
           animation: cdm-pick 0.65s cubic-bezier(0.22,1,0.36,1) forwards;
-          border-color: #e02020 !important;
-          box-shadow: 0 0 0 2px rgba(224,32,32,0.14), 0 16px 40px rgba(224,32,32,0.22) !important;
+          border-color: #EF0029 !important;
+          box-shadow: 0 0 0 2px rgba(239,0,41,0.14), 0 16px 40px rgba(239,0,41,0.22) !important;
         }
         .cdm-product-card {
           transition:
@@ -152,28 +149,150 @@ export default function ProductosPage() {
         }
         .cdm-product-card:hover {
           transform: translateY(-4px);
-          box-shadow: 0 12px 36px rgba(224,32,32,0.10);
-          border-color: #e8b0b0 !important;
+          box-shadow: 0 12px 36px rgba(239,0,41,0.10);
+          border-color: rgba(239,0,41,0.35) !important;
         }
         .cdm-card-focused {
-          box-shadow: 0 0 0 2px rgba(224,32,32,0.2), 0 12px 36px rgba(224,32,32,0.18) !important;
-          border-color: rgba(224,32,32,0.45) !important;
+          box-shadow: 0 0 0 2px rgba(239,0,41,0.15), 0 12px 36px rgba(239,0,41,0.14) !important;
+          border-color: rgba(239,0,41,0.35) !important;
         }
         .cdm-card-selected {
-          box-shadow: 0 0 0 2px rgba(224,32,32,0.35), 0 16px 48px rgba(224,32,32,0.28) !important;
-          border-color: #e02020 !important;
+          box-shadow: 0 0 0 2px rgba(239,0,41,0.30), 0 16px 48px rgba(239,0,41,0.22) !important;
+          border-color: #EF0029 !important;
         }
+        /* card top accent line on hover/selected */
+        .cdm-product-card::before {
+          content: '';
+          position: absolute;
+          top: 0; left: 0; right: 0;
+          height: 2px;
+          background: #EF0029;
+          transform: scaleX(0);
+          transform-origin: left;
+          transition: transform 0.3s cubic-bezier(0.22,1,0.36,1);
+          border-radius: 4px 4px 0 0;
+        }
+        .cdm-product-card:hover::before,
+        .cdm-card-selected::before,
+        .cdm-card-focused::before {
+          transform: scaleX(1);
+        }
+
+        /* Hero bg — dark mode aware */
+        .cdm-hero-wrap {
+          background: #f5f2eb;
+        }
+        .dark .cdm-hero-wrap {
+          background: var(--bg);
+        }
+        /* Hero top gradient fade */
+        .cdm-hero-top-fade {
+          background: linear-gradient(to bottom, #f5f2eb 0%, rgba(245,242,235,0.55) 50%, transparent 100%);
+        }
+        .dark .cdm-hero-top-fade {
+          background: linear-gradient(to bottom, #0A0A0A 0%, rgba(10,10,10,0.55) 50%, transparent 100%);
+        }
+        /* Hero bottom fade into catalog bg */
+        .cdm-hero-bottom-fade {
+          background: linear-gradient(to top, #FAFAFA 0%, rgba(250,250,250,0.7) 50%, transparent 100%);
+        }
+        .dark .cdm-hero-bottom-fade {
+          background: linear-gradient(to top, #0A0A0A 0%, rgba(10,10,10,0.7) 50%, transparent 100%);
+        }
+
+        /* Search input */
+        .cdm-search-input {
+          background: var(--surface);
+          border: 1px solid var(--border);
+          color: var(--text-primary);
+          border-radius: 8px;
+          width: 100%;
+          font-size: 13px;
+          padding: 12px 36px 12px 40px;
+          outline: none;
+          transition: border-color 0.2s;
+          box-sizing: border-box;
+        }
+        .cdm-search-input::placeholder {
+          color: var(--text-faint);
+        }
+        .cdm-search-input:focus {
+          border-color: #EF0029;
+        }
+
+        /* Filter tipo pills */
+        .cdm-filter-pill {
+          padding: 6px 16px;
+          font-size: 11px;
+          font-family: 'JetBrains Mono', 'Courier New', monospace;
+          border: 1px solid var(--border-strong);
+          border-radius: 2px;
+          background: var(--surface);
+          color: var(--text-secondary);
+          cursor: pointer;
+          transition: all 0.18s;
+          letter-spacing: 0.05em;
+        }
+        .cdm-filter-pill:hover {
+          border-color: #EF0029;
+          color: #EF0029;
+        }
+        .cdm-filter-pill.active {
+          background: #EF0029;
+          border-color: #EF0029;
+          color: #ffffff;
+        }
+
+        /* Sidebar item */
+        .cdm-sidebar-item {
+          width: 100%;
+          text-align: left;
+          padding: 7px 10px 7px 10px;
+          font-size: 13px;
+          font-family: 'Space Grotesk', sans-serif;
+          background: transparent;
+          border: none;
+          border-left: 2px solid transparent;
+          cursor: pointer;
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          color: var(--text-secondary);
+          transition: color 0.18s, background 0.18s, border-color 0.18s, padding-left 0.18s;
+          border-radius: 0 3px 3px 0;
+        }
+        .cdm-sidebar-item:hover {
+          color: #EF0029;
+          background: rgba(239,0,41,0.04);
+          border-left-color: rgba(239,0,41,0.4);
+        }
+        .cdm-sidebar-item.active {
+          color: #EF0029;
+          background: rgba(239,0,41,0.06);
+          border-left-color: #EF0029;
+          font-weight: 600;
+        }
+        .dark .cdm-sidebar-item:hover {
+          background: rgba(239,0,41,0.08);
+        }
+        .dark .cdm-sidebar-item.active {
+          background: rgba(239,0,41,0.10);
+        }
+
+        /* Sidebar divider */
+        .cdm-sidebar-divider {
+          border-color: var(--border);
+        }
+
         @keyframes pulse-dot {
           0%, 100% { opacity: 1; transform: scale(1); }
           50%       { opacity: 0.5; transform: scale(0.7); }
         }
       `}</style>
 
-      <div className="min-h-screen" style={{ background: "#f5f2eb" }}>
+      <div className="cdm-hero-wrap min-h-screen">
 
-        {/* ═══════════════════════════════════════════════════════════════
-            SPATIAL HERO
-        ═══════════════════════════════════════════════════════════════ */}
+        {/* HERO ============================================================ */}
         <section className="relative overflow-hidden" style={{ minHeight: "58vh" }}>
           {/* R3F Canvas */}
           <div className="absolute inset-0" style={{ zIndex: 0 }}>
@@ -191,7 +310,7 @@ export default function ProductosPage() {
             <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg" style={{ opacity: 0.025 }}>
               <defs>
                 <pattern id="techgrid" x="0" y="0" width="48" height="48" patternUnits="userSpaceOnUse">
-                  <path d="M 48 0 L 0 0 0 48" fill="none" stroke="#6b5a40" strokeWidth="0.5"/>
+                  <path d="M 48 0 L 0 0 0 48" fill="none" stroke="currentColor" strokeWidth="0.5"/>
                 </pattern>
               </defs>
               <rect width="100%" height="100%" fill="url(#techgrid)"/>
@@ -203,29 +322,15 @@ export default function ProductosPage() {
             className="absolute inset-0 pointer-events-none"
             style={{
               zIndex: 1,
-              background: "radial-gradient(ellipse 70% 60% at 62% 45%, rgba(224,32,32,0.055) 0%, transparent 70%)",
+              background: "radial-gradient(ellipse 70% 60% at 62% 45%, rgba(239,0,41,0.055) 0%, transparent 70%)",
             }}
           />
 
           {/* Top fade */}
-          <div
-            className="absolute inset-x-0 top-0 pointer-events-none"
-            style={{
-              zIndex: 2,
-              height: "260px",
-              background: "linear-gradient(to bottom, rgba(248,245,239,0.96) 0%, rgba(248,245,239,0.55) 50%, transparent 100%)",
-            }}
-          />
+          <div className="cdm-hero-top-fade absolute inset-x-0 top-0 pointer-events-none" style={{ zIndex: 2, height: "260px" }} />
 
-          {/* Bottom fade — dissolves into card section white */}
-          <div
-            className="absolute inset-x-0 bottom-0 pointer-events-none"
-            style={{
-              zIndex: 2,
-              height: "180px",
-              background: "linear-gradient(to top, #fafafa 0%, rgba(250,250,250,0.7) 50%, transparent 100%)",
-            }}
-          />
+          {/* Bottom fade */}
+          <div className="cdm-hero-bottom-fade absolute inset-x-0 bottom-0 pointer-events-none" style={{ zIndex: 2, height: "180px" }} />
 
           {/* UI layer */}
           <div className="relative flex flex-col justify-start gap-8" style={{ zIndex: 10 }}>
@@ -235,14 +340,8 @@ export default function ProductosPage() {
                 initial={{ opacity: 0, x: -12 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.5, ease: EASE }}
-                style={{
-                  color: "#e02020",
-                  fontSize: "10px",
-                  textTransform: "uppercase",
-                  letterSpacing: "0.28em",
-                  fontFamily: "'JetBrains Mono', 'Courier New', monospace",
-                  marginBottom: "16px",
-                }}
+                className="section-label"
+                style={{ marginBottom: "16px" }}
               >
                 {p.eyebrow}
               </motion.div>
@@ -255,14 +354,14 @@ export default function ProductosPage() {
                   fontFamily: "'Space Grotesk', sans-serif",
                   fontWeight: 700,
                   lineHeight: 1.1,
-                  color: "#111111",
+                  color: "var(--text-primary)",
                   fontSize: "clamp(1.875rem, 4vw, 2.25rem)",
                   margin: 0,
                 }}
               >
                 {p.h1_1}
                 <br />
-                <span style={{ color: "#e02020" }}>{p.h1_2}</span>
+                <span style={{ color: "#EF0029" }}>{p.h1_2}</span>
               </motion.h1>
 
               <motion.p
@@ -270,7 +369,7 @@ export default function ProductosPage() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.55, delay: 0.18, ease: EASE }}
                 style={{
-                  color: "#888888",
+                  color: "var(--text-muted)",
                   fontSize: "13px",
                   marginTop: "16px",
                   fontFamily: "'JetBrains Mono', 'Courier New', monospace",
@@ -292,33 +391,32 @@ export default function ProductosPage() {
                 style={{ maxWidth: "520px", marginBottom: "14px" }}
               >
                 <div style={{ position: "relative" }}>
-                  <Search size={15} style={{ position: "absolute", left: "14px", top: "50%", transform: "translateY(-50%)", color: "#BBBBBB", pointerEvents: "none" }} />
+                  <Search
+                    size={15}
+                    style={{
+                      position: "absolute", left: "14px", top: "50%",
+                      transform: "translateY(-50%)",
+                      color: "var(--text-faint)",
+                      pointerEvents: "none",
+                    }}
+                  />
                   <input
                     type="text"
                     value={search}
                     onChange={(e) => setSearch(e.target.value)}
                     placeholder={p.searchPlaceholder}
-                    style={{
-                      width: "100%",
-                      border: "1px solid #e0ddd5",
-                      borderRadius: "8px",
-                      background: "rgba(255,255,255,0.8)",
-                      backdropFilter: "blur(12px)",
-                      WebkitBackdropFilter: "blur(12px)",
-                      color: "#111111",
-                      fontSize: "13px",
-                      padding: "12px 36px 12px 40px",
-                      outline: "none",
-                      transition: "border-color 0.2s",
-                      boxSizing: "border-box",
-                    }}
-                    onFocus={(e) => (e.target.style.borderColor = "#e02020")}
-                    onBlur={(e) => (e.target.style.borderColor = "#e0ddd5")}
+                    className="cdm-search-input"
                   />
                   {search && (
                     <button
                       onClick={() => setSearch("")}
-                      style={{ position: "absolute", right: "12px", top: "50%", transform: "translateY(-50%)", background: "none", border: "none", cursor: "pointer", color: "#BBBBBB", padding: 0, display: "flex", alignItems: "center" }}
+                      style={{
+                        position: "absolute", right: "12px", top: "50%",
+                        transform: "translateY(-50%)",
+                        background: "none", border: "none", cursor: "pointer",
+                        color: "var(--text-faint)", padding: 0,
+                        display: "flex", alignItems: "center",
+                      }}
                     >
                       <X size={13} />
                     </button>
@@ -336,30 +434,7 @@ export default function ProductosPage() {
                   <button
                     key={tipo}
                     onClick={() => setTipoFiltro(tipo)}
-                    style={{
-                      padding: "6px 16px",
-                      fontSize: "11px",
-                      fontFamily: "'JetBrains Mono', 'Courier New', monospace",
-                      border: tipoFiltro === tipo ? "1px solid #e02020" : "1px solid #d8d4cc",
-                      borderRadius: "6px",
-                      background: tipoFiltro === tipo ? "#e02020" : "rgba(255,255,255,0.7)",
-                      backdropFilter: "blur(8px)",
-                      color: tipoFiltro === tipo ? "#ffffff" : "#555555",
-                      cursor: "pointer",
-                      transition: "all 0.2s",
-                    }}
-                    onMouseEnter={(e) => {
-                      if (tipoFiltro !== tipo) {
-                        (e.target as HTMLButtonElement).style.borderColor = "#e02020";
-                        (e.target as HTMLButtonElement).style.color = "#e02020";
-                      }
-                    }}
-                    onMouseLeave={(e) => {
-                      if (tipoFiltro !== tipo) {
-                        (e.target as HTMLButtonElement).style.borderColor = "#d8d4cc";
-                        (e.target as HTMLButtonElement).style.color = "#555555";
-                      }
-                    }}
+                    className={`cdm-filter-pill${tipoFiltro === tipo ? " active" : ""}`}
                   >
                     {tipo}
                   </button>
@@ -369,64 +444,53 @@ export default function ProductosPage() {
           </div>
         </section>
 
-        {/* ═══════════════════════════════════════════════════════════════
-            CATALOG GRID
-        ═══════════════════════════════════════════════════════════════ */}
-        <div style={{ background: "#FAFAFA" }}>
+        {/* CATALOG GRID ==================================================== */}
+        <div style={{ background: "var(--bg)" }}>
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 flex gap-8">
 
             {/* Sidebar */}
-            <aside className="hidden lg:block w-56 flex-shrink-0 pr-6" style={{ borderRight: "1px solid #eeebe4" }}>
+            <aside className="hidden lg:block w-56 flex-shrink-0 pr-6 cdm-sidebar-divider" style={{ borderRight: "1px solid var(--border)" }}>
               <div className="sticky top-24">
-                <div style={{ color: "#e02020", fontSize: "10px", textTransform: "uppercase", letterSpacing: "0.22em", fontFamily: "'JetBrains Mono', 'Courier New', monospace", marginBottom: "16px" }}>
+                <div
+                  className="section-label"
+                  style={{ marginBottom: "12px", paddingLeft: "10px" }}
+                >
                   {p.categorias}
                 </div>
-                <nav style={{ display: "flex", flexDirection: "column", gap: "2px" }}>
+                <div
+                  style={{
+                    height: "1px",
+                    background: "var(--border)",
+                    marginBottom: "8px",
+                  }}
+                />
+                <nav style={{ display: "flex", flexDirection: "column", gap: "1px" }}>
                   {productosData.map((prodRaw) => {
                     const prod = prodRaw as ProductoMl;
                     const prodNombre = mlField(prod as unknown as Record<string, string | undefined>, "nombre", lang);
+                    const isActive = sidebarActive === prod.id || selectedProduct === prod.id;
                     return (
-                    <button
-                      key={prod.id}
-                      onClick={() => {
-                        setSidebarActive(sidebarActive === prod.id ? null : prod.id);
-                        handleCardClick(prod.id);
-                      }}
-                      onMouseEnter={() => setHoveredProduct(prod.id)}
-                      onMouseLeave={() => setHoveredProduct(null)}
-                      style={{
-                        width: "100%",
-                        textAlign: "left",
-                        padding: "8px",
-                        fontSize: "14px",
-                        fontFamily: "'Space Grotesk', sans-serif",
-                        background: "none",
-                        border: "none",
-                        cursor: "pointer",
-                        display: "flex",
-                        alignItems: "center",
-                        gap: "8px",
-                        color: (sidebarActive === prod.id || selectedProduct === prod.id) ? "#e02020" : "#666666",
-                        transition: "color 0.2s",
-                      }}
-                      onMouseOver={(e) => ((e.currentTarget as HTMLButtonElement).style.color = "#e02020")}
-                      onMouseOut={(e) => {
-                        if (sidebarActive !== prod.id && selectedProduct !== prod.id) {
-                          (e.currentTarget as HTMLButtonElement).style.color = "#666666";
-                        }
-                      }}
-                    >
-                      <ChevronRight
-                        size={11}
-                        style={{
-                          flexShrink: 0,
-                          color: (sidebarActive === prod.id || selectedProduct === prod.id) ? "#e02020" : "#CCCCCC",
-                          transform: (sidebarActive === prod.id || selectedProduct === prod.id) ? "rotate(90deg)" : "none",
-                          transition: "transform 0.2s, color 0.2s",
+                      <button
+                        key={prod.id}
+                        onClick={() => {
+                          setSidebarActive(sidebarActive === prod.id ? null : prod.id);
+                          handleCardClick(prod.id);
                         }}
-                      />
-                      {prodNombre}
-                    </button>
+                        onMouseEnter={() => setHoveredProduct(prod.id)}
+                        onMouseLeave={() => setHoveredProduct(null)}
+                        className={`cdm-sidebar-item${isActive ? " active" : ""}`}
+                      >
+                        <ChevronRight
+                          size={10}
+                          style={{
+                            flexShrink: 0,
+                            color: isActive ? "#EF0029" : "var(--text-faint)",
+                            transform: isActive ? "rotate(90deg)" : "none",
+                            transition: "transform 0.2s, color 0.2s",
+                          }}
+                        />
+                        {prodNombre}
+                      </button>
                     );
                   })}
                 </nav>
@@ -436,11 +500,18 @@ export default function ProductosPage() {
             {/* Main column */}
             <div className="flex-1 min-w-0">
               {/* Results count */}
-              <div style={{ color: "#AAAAAA", fontSize: "11px", fontFamily: "'JetBrains Mono', 'Courier New', monospace", marginBottom: "20px" }}>
+              <div
+                style={{
+                  color: "var(--text-muted)",
+                  fontSize: "11px",
+                  fontFamily: "'JetBrains Mono', 'Courier New', monospace",
+                  marginBottom: "20px",
+                  letterSpacing: "0.04em",
+                }}
+              >
                 {countLabel}
                 {tipoFiltro !== p.tipos.todos && ` · ${tipoFiltro}`}
                 {search && ` · "${search}"`}
-
               </div>
 
               {/* Cards */}
@@ -467,17 +538,34 @@ export default function ProductosPage() {
                             isHovered && !isSelected ? "cdm-card-focused" : "",
                           ].join(" ")}
                           style={{
-                            background: "#ffffff",
+                            background: "var(--surface)",
                             padding: "20px",
                             display: "flex",
                             flexDirection: "column",
-                            border: "1px solid #ebebeb",
-                            borderRadius: "12px",
+                            border: "1px solid var(--border)",
+                            borderRadius: "4px",
+                            position: "relative",
+                            overflow: "hidden",
                           }}
                           onClick={() => handleCardClick(producto.id)}
                           onMouseEnter={() => setHoveredProduct(producto.id)}
                           onMouseLeave={() => setHoveredProduct(null)}
                         >
+                          {/* Subtle gradient wash top-right */}
+                          <div
+                            aria-hidden
+                            style={{
+                              position: "absolute",
+                              top: 0, right: 0,
+                              width: "80px", height: "80px",
+                              background: isSelected
+                                ? "radial-gradient(circle at top right, rgba(239,0,41,0.08) 0%, transparent 70%)"
+                                : "radial-gradient(circle at top right, rgba(239,0,41,0.035) 0%, transparent 70%)",
+                              pointerEvents: "none",
+                              transition: "background 0.3s",
+                            }}
+                          />
+
                           {/* Icon + PDF */}
                           <div className="flex items-start justify-between mb-4">
                             <div
@@ -487,10 +575,13 @@ export default function ProductosPage() {
                                 display: "flex",
                                 alignItems: "center",
                                 justifyContent: "center",
-                                borderRadius: "8px",
-                                backgroundColor: isSelected ? "rgba(224,32,32,0.12)" : "#fff0f0",
+                                borderRadius: "6px",
+                                backgroundColor: isSelected
+                                  ? "rgba(239,0,41,0.12)"
+                                  : "rgba(239,0,41,0.07)",
                                 flexShrink: 0,
-                                transition: "background-color 0.3s",
+                                transition: "background-color 0.25s",
+                                border: "1px solid rgba(239,0,41,0.12)",
                               }}
                             >
                               <Image
@@ -508,7 +599,18 @@ export default function ProductosPage() {
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 onClick={(e) => e.stopPropagation()}
-                                className="flex items-center gap-1 text-[#aaaaaa] hover:text-[#e02020] text-xs font-mono transition-colors"
+                                style={{
+                                  display: "inline-flex",
+                                  alignItems: "center",
+                                  gap: "4px",
+                                  color: "var(--text-faint)",
+                                  fontSize: "11px",
+                                  fontFamily: "'JetBrains Mono', monospace",
+                                  textDecoration: "none",
+                                  transition: "color 0.18s",
+                                }}
+                                onMouseEnter={(e) => ((e.currentTarget as HTMLAnchorElement).style.color = "#EF0029")}
+                                onMouseLeave={(e) => ((e.currentTarget as HTMLAnchorElement).style.color = "var(--text-faint)")}
                               >
                                 <FileText size={12} />
                                 {p.catalogoPDF}
@@ -518,14 +620,14 @@ export default function ProductosPage() {
 
                           {/* Name */}
                           <h3
-                            className="group-hover:text-[#e02020] transition-colors"
                             style={{
                               fontFamily: "'Space Grotesk', sans-serif",
                               fontWeight: 700,
                               fontSize: "15px",
-                              color: "#111111",
+                              color: isHovered || isSelected ? "#EF0029" : "var(--text-primary)",
                               marginBottom: "6px",
                               lineHeight: 1.3,
+                              transition: "color 0.18s",
                             }}
                           >
                             {nombre}
@@ -534,7 +636,7 @@ export default function ProductosPage() {
                           {/* Description */}
                           <p
                             style={{
-                              color: "#aaaaaa",
+                              color: "var(--text-muted)",
                               fontSize: "12px",
                               lineHeight: 1.6,
                               marginBottom: "16px",
@@ -555,7 +657,6 @@ export default function ProductosPage() {
                                 key={tipo}
                                 onClick={(e) => {
                                   e.stopPropagation();
-                                  // Map raw data tipo to translated label
                                   const tipoMap: Record<string, string> = {
                                     "Turismo":    p.tipos.turismo,
                                     "Industrial": p.tipos.industrial,
@@ -564,10 +665,10 @@ export default function ProductosPage() {
                                   };
                                   setTipoFiltro(tipoMap[tipo] ?? tipo);
                                 }}
-                                className={`text-[10px] px-2 py-0.5 font-mono uppercase tracking-wide transition-colors ${
-                                  tipoColors[tipo] || "bg-[#F5F5F5] text-[#888888] border border-[#EEEEEE]"
+                                className={`text-[10px] px-2 py-0.5 font-mono uppercase tracking-wide transition-all hover:opacity-80 ${
+                                  tipoColors[tipo] || "bg-[#F5F5F5] text-[#888888] border border-[#E8E8E8] dark:bg-[#2A2A2A] dark:text-[#999999] dark:border-[#3A3A3A]"
                                 }`}
-                                style={{ borderRadius: "4px" }}
+                                style={{ borderRadius: "3px" }}
                               >
                                 {TIPO_DISPLAY[tipo] ?? tipo}
                               </button>
@@ -584,8 +685,21 @@ export default function ProductosPage() {
                     animate={{ opacity: 1 }}
                     style={{ textAlign: "center", paddingTop: "80px", paddingBottom: "80px" }}
                   >
-                    <Search size={40} style={{ margin: "0 auto 16px", color: "#CCCCCC", opacity: 0.5, display: "block" }} />
-                    <p style={{ color: "#888888", fontFamily: "'Space Grotesk', sans-serif" }}>
+                    <Search
+                      size={40}
+                      style={{
+                        margin: "0 auto 16px",
+                        color: "var(--text-faint)",
+                        opacity: 0.5,
+                        display: "block",
+                      }}
+                    />
+                    <p
+                      style={{
+                        color: "var(--text-secondary)",
+                        fontFamily: "'Space Grotesk', sans-serif",
+                      }}
+                    >
                       {p.sinResultados} &quot;{search}&quot;
                     </p>
                   </motion.div>
