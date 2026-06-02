@@ -14,7 +14,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ### Company facts (use exact figures in copy)
 - Founded 1951, origins in Motor Tarabusi factory
 - 130,000+ active references ("referencias vivas")
-- 11 warehouses across Península Ibérica + Canary Islands (Lean Logistics)
+- 10 warehouses across Península Ibérica + Canary Islands (Lean Logistics)
 - 1,200,000+ annual material requests
 - Vehicle categories: **Turismo · Industrial · Agrícola · Vehículo Pesado**
 
@@ -216,7 +216,7 @@ Número: JetBrains Mono 700, 52px, color white
 Label: Inter 13px uppercase, color rgba(255,255,255,0.5), letter-spacing 0.1em
 Separadores: borde derecho rgba(255,255,255,0.1)
 Animación: counter animado al entrar en viewport
-Stats: 130.000+ Referencias · 11 Almacenes · +1.200.000 Peticiones/año · 1951 Fundación
+Stats: 130.000+ Referencias · 10 Almacenes · +1.200.000 Peticiones/año · 1951 Fundación
 ```
 
 ### Product Cards
