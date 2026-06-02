@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     template: "%s | Comercial del Motor",
   },
   description:
-    "Líderes en distribución de piezas de motor con más de 130.000 referencias. Pistones, cigüeñales, turbos, kits de distribución y mucho más. 11 almacenes en España.",
+    "Líderes en distribución de piezas de motor con más de 130.000 referencias. Pistones, cigüeñales, turbos, kits de distribución y mucho más. 10 almacenes en España.",
   keywords: ["piezas de motor", "recambios motor", "pistones", "cigüeñales", "turbos", "distribución"],
   icons: {
     icon: "/favicon.ico",

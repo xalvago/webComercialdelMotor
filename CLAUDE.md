@@ -6,6 +6,11 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 **cdm-web is a redesign of [comercialdelmotor.com](https://www.comercialdelmotor.com)** — the old site is the source of truth for content, copy, and structure.
 
+### Repository
+- **GitHub Repo:** `webComercialdelMotor`
+- **URL:** `https://github.com/xalvago/webComercialdelMotor.git`
+- **Deployment:** Vercel
+
 ### Company facts (use exact figures in copy)
 - Founded 1951, origins in Motor Tarabusi factory
 - 130,000+ active references ("referencias vivas")
