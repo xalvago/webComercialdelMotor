@@ -13,7 +13,7 @@ export default function StatsBar() {
 
   const stats = [
     { target: 130000, suffix: "+", label: s.referencias, prefix: "" },
-    { target: 11, suffix: "", label: s.almacenes, prefix: "" },
+    { target: 10, suffix: "", label: s.almacenes, prefix: "" },
     { target: 1200000, suffix: "+", label: s.peticiones, prefix: "" },
     { target: 1951, suffix: "", label: s.fundacion, prefix: "" },
   ];

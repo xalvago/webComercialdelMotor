@@ -82,7 +82,7 @@ export default function HeroSection() {
 
   const stats = [
     { val: "130K+", label: h.stat1 },
-    { val: "11",    label: h.stat2 },
+    { val: "10",    label: h.stat2 },
     { val: "75+",   label: h.stat3 },
   ];
 
