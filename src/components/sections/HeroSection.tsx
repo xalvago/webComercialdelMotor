@@ -170,28 +170,30 @@ export default function HeroSection() {
       {/* Left red accent bar */}
       <div className="absolute left-0 top-0 bottom-0 w-[3px] bg-gradient-to-b from-transparent via-[#EF0029] to-transparent opacity-70" />
 
-      {/* Summer schedule banner — desktop, raised to headline height */}
-      <motion.div
-        variants={bannerV}
-        initial="hidden"
-        animate={{
-          opacity: 1,
-          x: 0,
-          boxShadow: [
-            "0 0 0px rgba(239,0,41,0.0)",
-            "0 0 36px rgba(239,0,41,0.55)",
-            "0 0 0px rgba(239,0,41,0.0)",
-          ],
-        }}
-        transition={{
-          opacity: { duration: 0.55, delay: 0.5, ease },
-          x: { duration: 0.55, delay: 0.5, ease },
-          boxShadow: { repeat: Infinity, duration: 2.8, ease: "easeInOut", delay: 1 },
-        }}
-        className="hidden md:block absolute top-32 lg:top-36 right-6 sm:right-8 lg:right-12 z-20 w-80 lg:w-96 bg-[#1a0306]/90 backdrop-blur-md border-2 border-[#EF0029]/70 px-6 py-5"
-      >
-        <SummerBannerContent sb={sb} large />
-      </motion.div>
+      {/* Summer schedule banner — desktop, centered on headline+subtitle height */}
+      <div className="hidden md:block absolute top-1/2 -translate-y-1/2 right-6 sm:right-8 lg:right-12 z-20">
+        <motion.div
+          variants={bannerV}
+          initial="hidden"
+          animate={{
+            opacity: 1,
+            x: 0,
+            boxShadow: [
+              "0 0 0px rgba(239,0,41,0.0)",
+              "0 0 36px rgba(239,0,41,0.55)",
+              "0 0 0px rgba(239,0,41,0.0)",
+            ],
+          }}
+          transition={{
+            opacity: { duration: 0.55, delay: 0.5, ease },
+            x: { duration: 0.55, delay: 0.5, ease },
+            boxShadow: { repeat: Infinity, duration: 2.8, ease: "easeInOut", delay: 1 },
+          }}
+          className="w-80 lg:w-96 bg-[#1a0306]/90 backdrop-blur-md border-2 border-[#EF0029]/70 px-6 py-5"
+        >
+          <SummerBannerContent sb={sb} large />
+        </motion.div>
+      </div>
 
       {/* Content */}
       <div className="relative z-10 flex-1 flex items-center">
