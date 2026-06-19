@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { ArrowRight, ChevronDown, Clock } from "lucide-react";
+import { ArrowRight, ChevronDown, Clock, Sun } from "lucide-react";
 import { useLanguage } from "@/lib/i18n";
 
 const ease = [0.22, 1, 0.36, 1] as const;
@@ -95,10 +95,10 @@ function SummerBannerContent({ sb, large = false }: { sb: SummerBanner; large?: 
   const iconSize = large ? 16 : 14;
   const zoneSize = large ? "text-sm" : "text-sm";
   const hoursSize = large ? "text-sm" : "text-sm";
-  const mapH = large ? "h-7" : "h-8";
+  const mapH = large ? "h-20 lg:h-24" : "h-8";
   return (
     <>
-      <div className={`flex items-center gap-2 ${large ? "mb-3" : "mb-3"}`}>
+      <div className={`flex items-center gap-2 ${large ? "mb-3" : "mb-3"} relative`}>
         <motion.div
           animate={{ rotate: 360 }}
           transition={{ repeat: Infinity, duration: 6, ease: "linear" }}
@@ -111,13 +111,30 @@ function SummerBannerContent({ sb, large = false }: { sb: SummerBanner; large?: 
         >
           {sb.title}
         </span>
+        {large && (
+          <motion.div
+            className="absolute -top-2 -right-1"
+            animate={{ rotate: [0, 12, -8, 0], y: [0, -2, 0] }}
+            transition={{ repeat: Infinity, duration: 3.2, ease: "easeInOut" }}
+          >
+            <Sun size={22} className="text-amber-400 drop-shadow-[0_0_6px_rgba(251,191,36,0.7)]" />
+          </motion.div>
+        )}
       </div>
-      <div className={large ? "space-y-2.5" : "space-y-3"}>
+      {large && (
+        <p
+          className="text-amber-300/90 text-[11px] italic -mt-1 mb-3 rotate-[-1deg]"
+          style={{ fontFamily: "'Space Grotesk', sans-serif" }}
+        >
+          ¡Que no te pille el calor sin tus piezas! ☀️
+        </p>
+      )}
+      <div className={large ? "space-y-3" : "space-y-3"}>
         <div>
           <span className={`block text-white font-semibold ${zoneSize}`} style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
             {sb.zone1}
           </span>
-          <GhostMap src="/peninsula.jpg" alt="" className={`${mapH} w-full object-contain my-0.5`} />
+          <GhostMap src="/peninsula.jpg" alt="" className={`${mapH} w-full object-contain my-1`} />
           <span className={`block text-white/75 ${hoursSize}`} style={{ fontFamily: "'JetBrains Mono', monospace" }}>
             {sb.hours1}
           </span>
@@ -126,7 +143,7 @@ function SummerBannerContent({ sb, large = false }: { sb: SummerBanner; large?: 
           <span className={`block text-white font-semibold ${zoneSize}`} style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
             {sb.zone2}
           </span>
-          <GhostMap src="/canarias.jpg" alt="" className={`${mapH} w-full object-contain my-0.5`} />
+          <GhostMap src="/canarias.jpg" alt="" className={`${mapH} w-full object-contain my-1`} />
           <span className={`block text-white/75 ${hoursSize}`} style={{ fontFamily: "'JetBrains Mono', monospace" }}>
             {sb.hours2}
           </span>
@@ -196,7 +213,7 @@ export default function HeroSection() {
           x: { duration: 0.55, delay: 0.5, ease },
           boxShadow: { repeat: Infinity, duration: 2.8, ease: "easeInOut", delay: 1 },
         }}
-        className="hidden md:block absolute top-40 lg:top-48 right-6 sm:right-8 lg:right-12 z-20 w-64 lg:w-72 max-h-[280px] lg:max-h-[320px] overflow-hidden bg-[#1a0306]/90 backdrop-blur-md border-2 border-[#EF0029]/70 px-5 py-4"
+        className="hidden md:block absolute top-32 lg:top-36 right-6 sm:right-8 lg:right-12 z-20 w-72 lg:w-80 bg-[#1a0306]/90 backdrop-blur-md border-2 border-[#EF0029]/70 px-5 py-4"
       >
         <SummerBannerContent sb={sb} large />
       </motion.div>
