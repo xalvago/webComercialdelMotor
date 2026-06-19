@@ -77,11 +77,38 @@ type SummerBanner = {
   hours2: string;
 };
 
+/** Simplified blind silhouette of the Iberian Peninsula */
+function PeninsulaMap({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 100 100" className={className} aria-hidden>
+      <path
+        d="M18 8 L62 4 L82 16 L88 30 L78 34 L80 48 L70 58 L74 70 L60 82 L52 96 L42 88 L30 90 L26 76 L14 70 L10 54 L18 44 L8 30 L18 24 Z"
+        fill="currentColor"
+      />
+    </svg>
+  );
+}
+
+/** Simplified blind silhouette of the Canary Islands */
+function CanaryMap({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 100 40" className={className} aria-hidden>
+      <ellipse cx="8" cy="20" rx="6" ry="9" fill="currentColor" />
+      <ellipse cx="22" cy="14" rx="4" ry="6" fill="currentColor" />
+      <ellipse cx="34" cy="22" rx="7" ry="10" fill="currentColor" />
+      <ellipse cx="50" cy="18" rx="5" ry="7" fill="currentColor" />
+      <ellipse cx="64" cy="24" rx="9" ry="11" fill="currentColor" />
+      <ellipse cx="84" cy="20" rx="10" ry="13" fill="currentColor" />
+    </svg>
+  );
+}
+
 function SummerBannerContent({ sb, large = false }: { sb: SummerBanner; large?: boolean }) {
   const titleSize = large ? "text-sm" : "text-xs";
   const iconSize = large ? 20 : 14;
   const zoneSize = large ? "text-lg" : "text-sm";
   const hoursSize = large ? "text-base" : "text-sm";
+  const mapH = large ? "h-12" : "h-8";
   return (
     <>
       <div className={`flex items-center gap-2 ${large ? "mb-4" : "mb-3"}`}>
@@ -98,20 +125,22 @@ function SummerBannerContent({ sb, large = false }: { sb: SummerBanner; large?: 
           {sb.title}
         </span>
       </div>
-      <div className={large ? "space-y-3" : "space-y-2"}>
-        <div className="flex items-baseline justify-between gap-3">
-          <span className={`text-white font-semibold ${zoneSize}`} style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+      <div className={large ? "space-y-4" : "space-y-3"}>
+        <div>
+          <span className={`block text-white font-semibold ${zoneSize}`} style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
             {sb.zone1}
           </span>
-          <span className={`text-white/75 ${hoursSize}`} style={{ fontFamily: "'JetBrains Mono', monospace" }}>
+          <PeninsulaMap className={`${mapH} w-full text-[#EF0029]/25 my-1`} />
+          <span className={`block text-white/75 ${hoursSize}`} style={{ fontFamily: "'JetBrains Mono', monospace" }}>
             {sb.hours1}
           </span>
         </div>
-        <div className="flex items-baseline justify-between gap-3">
-          <span className={`text-white font-semibold ${zoneSize}`} style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+        <div>
+          <span className={`block text-white font-semibold ${zoneSize}`} style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
             {sb.zone2}
           </span>
-          <span className={`text-white/75 ${hoursSize}`} style={{ fontFamily: "'JetBrains Mono', monospace" }}>
+          <CanaryMap className={`${mapH} w-full text-[#EF0029]/25 my-1`} />
+          <span className={`block text-white/75 ${hoursSize}`} style={{ fontFamily: "'JetBrains Mono', monospace" }}>
             {sb.hours2}
           </span>
         </div>
@@ -180,7 +209,7 @@ export default function HeroSection() {
           x: { duration: 0.55, delay: 0.5, ease },
           boxShadow: { repeat: Infinity, duration: 2.8, ease: "easeInOut", delay: 1 },
         }}
-        className="hidden md:block absolute top-32 lg:top-40 right-8 lg:right-12 z-20 max-w-md bg-[#1a0306]/90 backdrop-blur-md border-2 border-[#EF0029]/70 px-7 py-6"
+        className="hidden md:block absolute top-40 lg:top-48 right-8 lg:right-12 z-20 max-w-md bg-[#1a0306]/90 backdrop-blur-md border-2 border-[#EF0029]/70 px-7 py-6"
       >
         <SummerBannerContent sb={sb} large />
       </motion.div>
