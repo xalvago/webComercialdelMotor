@@ -77,37 +77,41 @@ type SummerBanner = {
   hours2: string;
 };
 
-function SummerBannerContent({ sb }: { sb: SummerBanner }) {
+function SummerBannerContent({ sb, large = false }: { sb: SummerBanner; large?: boolean }) {
+  const titleSize = large ? "text-sm" : "text-xs";
+  const iconSize = large ? 20 : 14;
+  const zoneSize = large ? "text-lg" : "text-sm";
+  const hoursSize = large ? "text-base" : "text-sm";
   return (
     <>
-      <div className="flex items-center gap-2 mb-3">
+      <div className={`flex items-center gap-2 ${large ? "mb-4" : "mb-3"}`}>
         <motion.div
           animate={{ rotate: 360 }}
           transition={{ repeat: Infinity, duration: 6, ease: "linear" }}
         >
-          <Clock size={14} className="text-[#EF0029]" />
+          <Clock size={iconSize} className="text-[#EF0029]" />
         </motion.div>
         <span
-          className="text-[#EF0029] text-xs uppercase tracking-[0.15em]"
+          className={`text-[#EF0029] ${titleSize} uppercase tracking-[0.15em] font-bold`}
           style={{ fontFamily: "'JetBrains Mono', monospace" }}
         >
           {sb.title}
         </span>
       </div>
-      <div className="space-y-2">
+      <div className={large ? "space-y-3" : "space-y-2"}>
         <div className="flex items-baseline justify-between gap-3">
-          <span className="text-white text-sm font-semibold" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+          <span className={`text-white font-semibold ${zoneSize}`} style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
             {sb.zone1}
           </span>
-          <span className="text-white/65 text-sm" style={{ fontFamily: "'JetBrains Mono', monospace" }}>
+          <span className={`text-white/75 ${hoursSize}`} style={{ fontFamily: "'JetBrains Mono', monospace" }}>
             {sb.hours1}
           </span>
         </div>
         <div className="flex items-baseline justify-between gap-3">
-          <span className="text-white text-sm font-semibold" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+          <span className={`text-white font-semibold ${zoneSize}`} style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
             {sb.zone2}
           </span>
-          <span className="text-white/65 text-sm" style={{ fontFamily: "'JetBrains Mono', monospace" }}>
+          <span className={`text-white/75 ${hoursSize}`} style={{ fontFamily: "'JetBrains Mono', monospace" }}>
             {sb.hours2}
           </span>
         </div>
@@ -158,14 +162,27 @@ export default function HeroSection() {
       {/* Left red accent bar */}
       <div className="absolute left-0 top-0 bottom-0 w-[3px] bg-gradient-to-b from-transparent via-[#EF0029] to-transparent opacity-70" />
 
-      {/* Summer schedule banner — desktop, bottom-right floating */}
+      {/* Summer schedule banner — desktop, raised to headline height */}
       <motion.div
         variants={bannerV}
         initial="hidden"
-        animate="visible"
-        className="hidden md:block absolute bottom-10 right-8 lg:right-12 z-20 max-w-sm bg-[#0D0D0D]/80 backdrop-blur-md border border-[#EF0029]/30 px-5 py-4"
+        animate={{
+          opacity: 1,
+          x: 0,
+          boxShadow: [
+            "0 0 0px rgba(239,0,41,0.0)",
+            "0 0 36px rgba(239,0,41,0.55)",
+            "0 0 0px rgba(239,0,41,0.0)",
+          ],
+        }}
+        transition={{
+          opacity: { duration: 0.55, delay: 0.5, ease },
+          x: { duration: 0.55, delay: 0.5, ease },
+          boxShadow: { repeat: Infinity, duration: 2.8, ease: "easeInOut", delay: 1 },
+        }}
+        className="hidden md:block absolute top-32 lg:top-40 right-8 lg:right-12 z-20 max-w-md bg-[#1a0306]/90 backdrop-blur-md border-2 border-[#EF0029]/70 px-7 py-6"
       >
-        <SummerBannerContent sb={sb} />
+        <SummerBannerContent sb={sb} large />
       </motion.div>
 
       {/* Content */}
