@@ -28,6 +28,11 @@ export const translations = {
       stat3: "Años de experiencia",
       scroll: "scroll",
     },
+    summerBanner: {
+      title: "Horario de verano",
+      line1: "Península: ininterrumpido de 08:30 a 16:30 (julio–agosto)",
+      line2: "Canarias: ininterrumpido de 08:00 a 16:00 (julio–agosto)",
+    },
     stats: {
       referencias: "Referencias vivas",
       almacenes: "Almacenes en España",
@@ -226,6 +231,11 @@ export const translations = {
       stat3: "Years of experience",
       scroll: "scroll",
     },
+    summerBanner: {
+      title: "Summer schedule",
+      line1: "Peninsula: continuously from 8:30 AM to 4:30 PM (July–August)",
+      line2: "Canary Islands: continuously from 8:00 AM to 4:00 PM (July–August)",
+    },
     stats: {
       referencias: "Active references",
       almacenes: "Warehouses in Spain",
@@ -423,6 +433,11 @@ export const translations = {
       stat2: "Entrepôts",
       stat3: "Ans d'expérience",
       scroll: "défiler",
+    },
+    summerBanner: {
+      title: "Horaires d'été",
+      line1: "Péninsule : en continu de 08h30 à 16h30 (juillet–août)",
+      line2: "Canaries : en continu de 08h00 à 16h00 (juillet–août)",
     },
     stats: {
       referencias: "Références actives",

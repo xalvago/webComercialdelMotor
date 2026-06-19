@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { ArrowRight, ChevronDown } from "lucide-react";
+import { ArrowRight, ChevronDown, Clock } from "lucide-react";
 import { useLanguage } from "@/lib/i18n";
 
 const ease = [0.22, 1, 0.36, 1] as const;
@@ -64,9 +64,15 @@ function TechGrid() {
   );
 }
 
+const bannerV = {
+  hidden: { opacity: 0, x: 24 },
+  visible: { opacity: 1, x: 0, transition: { duration: 0.55, delay: 0.5, ease } },
+};
+
 export default function HeroSection() {
   const { t } = useLanguage();
   const h = t.hero;
+  const sb = t.summerBanner;
 
   const lines = [
     { text: h.h1_1, accent: false },
@@ -104,6 +110,30 @@ export default function HeroSection() {
 
       {/* Left red accent bar */}
       <div className="absolute left-0 top-0 bottom-0 w-[3px] bg-gradient-to-b from-transparent via-[#EF0029] to-transparent opacity-70" />
+
+      {/* Summer schedule banner */}
+      <motion.div
+        variants={bannerV}
+        initial="hidden"
+        animate="visible"
+        className="absolute top-24 md:top-28 right-4 sm:right-8 lg:right-12 z-20 max-w-xs sm:max-w-sm bg-[#0D0D0D]/80 backdrop-blur-md border border-[#EF0029]/30 px-5 py-4"
+      >
+        <div className="flex items-center gap-2 mb-2">
+          <Clock size={14} className="text-[#EF0029]" />
+          <span
+            className="text-[#EF0029] text-xs uppercase tracking-[0.15em]"
+            style={{ fontFamily: "'JetBrains Mono', monospace" }}
+          >
+            {sb.title}
+          </span>
+        </div>
+        <p className="text-white/80 text-sm leading-snug" style={{ fontFamily: "'Inter', sans-serif" }}>
+          {sb.line1}
+        </p>
+        <p className="text-white/80 text-sm leading-snug mt-1" style={{ fontFamily: "'Inter', sans-serif" }}>
+          {sb.line2}
+        </p>
+      </motion.div>
 
       {/* Content */}
       <div className="relative z-10 flex-1 flex items-center">
