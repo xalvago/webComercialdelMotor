@@ -29,7 +29,8 @@ export const translations = {
       scroll: "scroll",
     },
     summerBanner: {
-      title: "Horario de verano (julio–agosto)",
+      title: "Horario de verano",
+      months: "(julio–agosto)",
       zone1: "Península",
       hours1: "08:30 – 16:30 ininterrumpido",
       zone2: "Canarias",
@@ -234,7 +235,8 @@ export const translations = {
       scroll: "scroll",
     },
     summerBanner: {
-      title: "Summer schedule (July–August)",
+      title: "Summer schedule",
+      months: "(July–August)",
       zone1: "Peninsula",
       hours1: "8:30 AM – 4:30 PM, continuously",
       zone2: "Canary Islands",
@@ -439,7 +441,8 @@ export const translations = {
       scroll: "défiler",
     },
     summerBanner: {
-      title: "Horaires d'été (juillet–août)",
+      title: "Horaires d'été",
+      months: "(juillet–août)",
       zone1: "Péninsule",
       hours1: "08h30 – 16h30 en continu",
       zone2: "Canaries",
