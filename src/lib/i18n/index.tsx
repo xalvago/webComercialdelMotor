@@ -29,9 +29,11 @@ export const translations = {
       scroll: "scroll",
     },
     summerBanner: {
-      title: "Horario de verano",
-      line1: "Península: ininterrumpido de 08:30 a 16:30 (julio–agosto)",
-      line2: "Canarias: ininterrumpido de 08:00 a 16:00 (julio–agosto)",
+      title: "Horario de verano (julio–agosto)",
+      zone1: "Península",
+      hours1: "08:30 – 16:30 ininterrumpido",
+      zone2: "Canarias",
+      hours2: "08:00 – 16:00 ininterrumpido",
     },
     stats: {
       referencias: "Referencias vivas",
@@ -232,9 +234,11 @@ export const translations = {
       scroll: "scroll",
     },
     summerBanner: {
-      title: "Summer schedule",
-      line1: "Peninsula: continuously from 8:30 AM to 4:30 PM (July–August)",
-      line2: "Canary Islands: continuously from 8:00 AM to 4:00 PM (July–August)",
+      title: "Summer schedule (July–August)",
+      zone1: "Peninsula",
+      hours1: "8:30 AM – 4:30 PM, continuously",
+      zone2: "Canary Islands",
+      hours2: "8:00 AM – 4:00 PM, continuously",
     },
     stats: {
       referencias: "Active references",
@@ -435,9 +439,11 @@ export const translations = {
       scroll: "défiler",
     },
     summerBanner: {
-      title: "Horaires d'été",
-      line1: "Péninsule : en continu de 08h30 à 16h30 (juillet–août)",
-      line2: "Canaries : en continu de 08h00 à 16h00 (juillet–août)",
+      title: "Horaires d'été (juillet–août)",
+      zone1: "Péninsule",
+      hours1: "08h30 – 16h30 en continu",
+      zone2: "Canaries",
+      hours2: "08h00 – 16h00 en continu",
     },
     stats: {
       referencias: "Références actives",

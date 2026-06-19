@@ -116,10 +116,15 @@ export default function HeroSection() {
         variants={bannerV}
         initial="hidden"
         animate="visible"
-        className="absolute top-24 md:top-28 right-4 sm:right-8 lg:right-12 z-20 max-w-xs sm:max-w-sm bg-[#0D0D0D]/80 backdrop-blur-md border border-[#EF0029]/30 px-5 py-4"
+        className="absolute top-24 md:top-auto md:bottom-10 right-4 sm:right-8 lg:right-12 z-20 w-[calc(100%-2rem)] sm:w-auto sm:max-w-sm bg-[#0D0D0D]/80 backdrop-blur-md border border-[#EF0029]/30 px-5 py-4"
       >
-        <div className="flex items-center gap-2 mb-2">
-          <Clock size={14} className="text-[#EF0029]" />
+        <div className="flex items-center gap-2 mb-3">
+          <motion.div
+            animate={{ rotate: 360 }}
+            transition={{ repeat: Infinity, duration: 6, ease: "linear" }}
+          >
+            <Clock size={14} className="text-[#EF0029]" />
+          </motion.div>
           <span
             className="text-[#EF0029] text-xs uppercase tracking-[0.15em]"
             style={{ fontFamily: "'JetBrains Mono', monospace" }}
@@ -127,12 +132,30 @@ export default function HeroSection() {
             {sb.title}
           </span>
         </div>
-        <p className="text-white/80 text-sm leading-snug" style={{ fontFamily: "'Inter', sans-serif" }}>
-          {sb.line1}
-        </p>
-        <p className="text-white/80 text-sm leading-snug mt-1" style={{ fontFamily: "'Inter', sans-serif" }}>
-          {sb.line2}
-        </p>
+        <div className="space-y-2">
+          <div className="flex items-baseline justify-between gap-3">
+            <span className="text-white text-sm font-semibold" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+              {sb.zone1}
+            </span>
+            <span
+              className="text-white/65 text-sm"
+              style={{ fontFamily: "'JetBrains Mono', monospace" }}
+            >
+              {sb.hours1}
+            </span>
+          </div>
+          <div className="flex items-baseline justify-between gap-3">
+            <span className="text-white text-sm font-semibold" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+              {sb.zone2}
+            </span>
+            <span
+              className="text-white/65 text-sm"
+              style={{ fontFamily: "'JetBrains Mono', monospace" }}
+            >
+              {sb.hours2}
+            </span>
+          </div>
+        </div>
       </motion.div>
 
       {/* Content */}
