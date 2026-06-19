@@ -69,6 +69,53 @@ const bannerV = {
   visible: { opacity: 1, x: 0, transition: { duration: 0.55, delay: 0.5, ease } },
 };
 
+type SummerBanner = {
+  title: string;
+  zone1: string;
+  hours1: string;
+  zone2: string;
+  hours2: string;
+};
+
+function SummerBannerContent({ sb }: { sb: SummerBanner }) {
+  return (
+    <>
+      <div className="flex items-center gap-2 mb-3">
+        <motion.div
+          animate={{ rotate: 360 }}
+          transition={{ repeat: Infinity, duration: 6, ease: "linear" }}
+        >
+          <Clock size={14} className="text-[#EF0029]" />
+        </motion.div>
+        <span
+          className="text-[#EF0029] text-xs uppercase tracking-[0.15em]"
+          style={{ fontFamily: "'JetBrains Mono', monospace" }}
+        >
+          {sb.title}
+        </span>
+      </div>
+      <div className="space-y-2">
+        <div className="flex items-baseline justify-between gap-3">
+          <span className="text-white text-sm font-semibold" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+            {sb.zone1}
+          </span>
+          <span className="text-white/65 text-sm" style={{ fontFamily: "'JetBrains Mono', monospace" }}>
+            {sb.hours1}
+          </span>
+        </div>
+        <div className="flex items-baseline justify-between gap-3">
+          <span className="text-white text-sm font-semibold" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+            {sb.zone2}
+          </span>
+          <span className="text-white/65 text-sm" style={{ fontFamily: "'JetBrains Mono', monospace" }}>
+            {sb.hours2}
+          </span>
+        </div>
+      </div>
+    </>
+  );
+}
+
 export default function HeroSection() {
   const { t } = useLanguage();
   const h = t.hero;
@@ -111,51 +158,14 @@ export default function HeroSection() {
       {/* Left red accent bar */}
       <div className="absolute left-0 top-0 bottom-0 w-[3px] bg-gradient-to-b from-transparent via-[#EF0029] to-transparent opacity-70" />
 
-      {/* Summer schedule banner */}
+      {/* Summer schedule banner — desktop, bottom-right floating */}
       <motion.div
         variants={bannerV}
         initial="hidden"
         animate="visible"
-        className="absolute top-24 md:top-auto md:bottom-10 right-4 sm:right-8 lg:right-12 z-20 w-[calc(100%-2rem)] sm:w-auto sm:max-w-sm bg-[#0D0D0D]/80 backdrop-blur-md border border-[#EF0029]/30 px-5 py-4"
+        className="hidden md:block absolute bottom-10 right-8 lg:right-12 z-20 max-w-sm bg-[#0D0D0D]/80 backdrop-blur-md border border-[#EF0029]/30 px-5 py-4"
       >
-        <div className="flex items-center gap-2 mb-3">
-          <motion.div
-            animate={{ rotate: 360 }}
-            transition={{ repeat: Infinity, duration: 6, ease: "linear" }}
-          >
-            <Clock size={14} className="text-[#EF0029]" />
-          </motion.div>
-          <span
-            className="text-[#EF0029] text-xs uppercase tracking-[0.15em]"
-            style={{ fontFamily: "'JetBrains Mono', monospace" }}
-          >
-            {sb.title}
-          </span>
-        </div>
-        <div className="space-y-2">
-          <div className="flex items-baseline justify-between gap-3">
-            <span className="text-white text-sm font-semibold" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
-              {sb.zone1}
-            </span>
-            <span
-              className="text-white/65 text-sm"
-              style={{ fontFamily: "'JetBrains Mono', monospace" }}
-            >
-              {sb.hours1}
-            </span>
-          </div>
-          <div className="flex items-baseline justify-between gap-3">
-            <span className="text-white text-sm font-semibold" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
-              {sb.zone2}
-            </span>
-            <span
-              className="text-white/65 text-sm"
-              style={{ fontFamily: "'JetBrains Mono', monospace" }}
-            >
-              {sb.hours2}
-            </span>
-          </div>
-        </div>
+        <SummerBannerContent sb={sb} />
       </motion.div>
 
       {/* Content */}
@@ -262,6 +272,17 @@ export default function HeroSection() {
                   </div>
                 </div>
               ))}
+            </motion.div>
+
+            {/* Summer schedule banner — mobile, below stats strip */}
+            <motion.div
+              variants={fadeUpV}
+              custom={1.0}
+              initial="hidden"
+              animate="visible"
+              className="md:hidden mt-6 max-w-sm bg-[#0D0D0D]/80 backdrop-blur-md border border-[#EF0029]/30 px-5 py-4"
+            >
+              <SummerBannerContent sb={sb} />
             </motion.div>
           </div>
         </div>
