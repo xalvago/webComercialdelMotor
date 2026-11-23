@@ -1,12 +1,10 @@
 "use client";
 
 import { useState, useMemo, useCallback } from "react";
-import dynamic from "next/dynamic";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { Search, FileText, ChevronRight, X } from "lucide-react";
 import { Stagger, fadeInUp } from "@/components/animations";
-import SceneErrorBoundary from "@/components/spatial/SceneErrorBoundary";
 import productosData from "@/lib/data/productos.json";
 import { useLanguage, type Lang } from "@/lib/i18n";
 
@@ -19,16 +17,6 @@ function mlField(obj: Record<string, string | undefined>, field: string, lang: L
   if (lang !== "es") { const v = obj[`${field}_${lang}`]; if (v) return v; }
   return obj[field] ?? "";
 }
-
-const SpatialScene = dynamic(
-  () => import("@/components/spatial/SpatialScene"),
-  {
-    ssr: false,
-    loading: () => (
-      <div style={{ width: "100%", height: "100%", background: "transparent" }} />
-    ),
-  }
-);
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 
@@ -130,7 +118,7 @@ export default function ProductosPage() {
 
   return (
     <>
-      <style>{`
+      <style dangerouslySetInnerHTML={{ __html: `
         @keyframes cdm-pick {
           0%   { transform: translateY(0)   scale(1); }
           35%  { transform: translateY(-8px) scale(1.04); }
@@ -180,14 +168,14 @@ export default function ProductosPage() {
 
         /* Hero bg — dark mode aware */
         .cdm-hero-wrap {
-          background: #f5f2eb;
+          background: #ffffff;
         }
         .dark .cdm-hero-wrap {
           background: var(--bg);
         }
         /* Hero top gradient fade */
         .cdm-hero-top-fade {
-          background: linear-gradient(to bottom, #f5f2eb 0%, rgba(245,242,235,0.55) 50%, transparent 100%);
+          background: linear-gradient(to bottom, #ffffff 0%, rgba(255,255,255,0.55) 50%, transparent 100%);
         }
         .dark .cdm-hero-top-fade {
           background: linear-gradient(to bottom, #0A0A0A 0%, rgba(10,10,10,0.55) 50%, transparent 100%);
@@ -288,21 +276,31 @@ export default function ProductosPage() {
           0%, 100% { opacity: 1; transform: scale(1); }
           50%       { opacity: 0.5; transform: scale(0.7); }
         }
-      `}</style>
+      ` }} />
 
       <div className="cdm-hero-wrap min-h-screen">
 
         {/* HERO ============================================================ */}
         <section className="relative overflow-hidden" style={{ minHeight: "58vh" }}>
-          {/* R3F Canvas */}
-          <div className="absolute inset-0" style={{ zIndex: 0 }}>
-            <SceneErrorBoundary>
-              <SpatialScene
-                hoveredProduct={hoveredProduct}
-                selectedProduct={selectedProduct}
-                searchQuery={search}
-              />
-            </SceneErrorBoundary>
+          {/* Warehouse process animation (white model, no text): arrival → storage → search → order → picking → packing → delivery */}
+          <div
+            className="absolute inset-y-0 right-0 w-full lg:w-[64%] opacity-30 lg:opacity-100 pointer-events-none"
+            style={{ zIndex: 0 }}
+            aria-hidden="true"
+          >
+            <video
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="auto"
+              poster="/video/almacen-proceso-poster.jpg"
+              className="w-full h-full object-cover object-center dark:invert dark:hue-rotate-180"
+            >
+              <source src="/video/almacen-proceso.mp4" type="video/mp4" />
+            </video>
+            {/* soft edge toward the title and search on the left */}
+            <div className="hidden lg:block absolute inset-y-0 left-0 w-1/4 bg-gradient-to-r from-white dark:from-[#0A0A0A] to-transparent" />
           </div>
 
           {/* Technical grid */}
@@ -316,15 +314,6 @@ export default function ProductosPage() {
               <rect width="100%" height="100%" fill="url(#techgrid)"/>
             </svg>
           </div>
-
-          {/* Red radial glow */}
-          <div
-            className="absolute inset-0 pointer-events-none"
-            style={{
-              zIndex: 1,
-              background: "radial-gradient(ellipse 70% 60% at 62% 45%, rgba(239,0,41,0.055) 0%, transparent 70%)",
-            }}
-          />
 
           {/* Top fade */}
           <div className="cdm-hero-top-fade absolute inset-x-0 top-0 pointer-events-none" style={{ zIndex: 2, height: "260px" }} />
